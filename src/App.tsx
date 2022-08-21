@@ -1,26 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ColorfulBoard from "./components/ColorfulBeads";
+import CounterBoard from "./components/CounterBoard";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="counter">
+    <header>
+      <h1>ビーズカンター</h1>
+    </header>
+    <CounterBoard />
+    <ColorfulBoard />
+  </div>
+);
 
 export default App;

@@ -1,18 +1,21 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { PropType } from "../types/utils";
-import { CounterState } from "../reducer";
-import { add, decrement, increment } from "../actions";
-import "./CounterBoard.css";
 import { Button, Card, Statistic } from "semantic-ui-react";
+import { CounterState } from "../features/counter/counter-reducer";
+import {
+  added,
+  decremented,
+  incremented,
+} from "../features/counter/counter-actions";
+import "./CounterBoard.css";
 
 const BULK_UNIT = 10;
 
 type Props = {
-  count?: number;
-  add?: (amount: number) => void;
-  decrement?: () => void;
-  increment?: () => void;
+  count: number;
+  add: (amount: number) => void;
+  decrement: () => void;
+  increment: () => void;
 };
 
 const Component = ({
@@ -45,17 +48,15 @@ const Component = ({
 );
 
 const Container = () => {
-  const count = useSelector<CounterState, PropType<CounterState, "count">>(
-    (state) => state.count
-  );
+  const count = useSelector<CounterState, number>((state) => state.count);
   const dispatch = useDispatch();
 
   return (
     <Component
       count={count}
-      add={(amount: number) => dispatch(add(amount))}
-      decrement={() => dispatch(decrement())}
-      increment={() => dispatch(increment())}
+      add={(amount: number) => dispatch(added(amount))}
+      decrement={() => dispatch(decremented())}
+      increment={() => dispatch(incremented())}
     />
   );
 };

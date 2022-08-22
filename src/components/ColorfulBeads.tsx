@@ -4,8 +4,7 @@ import {
   Label,
   SemanticCOLORS,
 } from "semantic-ui-react";
-import { CounterState } from "../reducer";
-import { PropType } from "../types/utils";
+import { CounterState } from "../features/counter/counter-reducer";
 import "./CounterBoard.css";
 
 const colors: SemanticCOLORS[] = [
@@ -37,9 +36,7 @@ const Component = ({ count }: Props) => (
 );
 
 const Container = () => {
-  const count = useSelector<CounterState, PropType<CounterState, "count">>(
-    (state) => state.count
-  );
+  const count = useSelector<CounterState, number>((state) => state.count);
 
   return <Component count={count} />;
 };

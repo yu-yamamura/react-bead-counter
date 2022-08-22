@@ -1,12 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Button, Card, Statistic } from "semantic-ui-react";
-import { CounterState } from "../features/counter/counter-reducer";
-import {
-  added,
-  decremented,
-  incremented,
-} from "../features/counter/counter-actions";
+import { CounterState } from "../features/counter";
+import { counterSlice } from "../features/counter";
 import "./CounterBoard.css";
 
 const BULK_UNIT = 10;
@@ -50,6 +46,7 @@ const Component = ({
 const Container = () => {
   const count = useSelector<CounterState, number>((state) => state.count);
   const dispatch = useDispatch();
+  const { added, decremented, incremented } = counterSlice.actions;
 
   return (
     <Component

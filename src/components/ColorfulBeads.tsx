@@ -4,7 +4,7 @@ import {
   Label,
   SemanticCOLORS,
 } from "semantic-ui-react";
-import { CounterState } from "../features/counter/counter-reducer";
+import { CounterState } from "../features/counter";
 import "./CounterBoard.css";
 
 const colors: SemanticCOLORS[] = [

@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux";
 import {
   Container as SemanticContainer,
   Label,
   SemanticCOLORS,
 } from "semantic-ui-react";
-import { CounterState } from "../features/counter";
 import "./CounterBoard.css";
 
 const colors: SemanticCOLORS[] = [
@@ -27,7 +25,7 @@ const range = (n: number) => (n < 0 ? [] : Array.from(Array(n), (_, i) => i));
 
 type Props = { count: number };
 
-const Component = ({ count }: Props) => (
+const ColorfulBeads = ({ count }: Props) => (
   <SemanticContainer className="beads-box">
     {range(count).map((n: number) => (
       <Label circular color={colors[n % colors.length]} key={n} />
@@ -35,10 +33,4 @@ const Component = ({ count }: Props) => (
   </SemanticContainer>
 );
 
-const Container = () => {
-  const count = useSelector<CounterState, number>((state) => state.count);
-
-  return <Component count={count} />;
-};
-
-export default Container;
+export default ColorfulBeads;

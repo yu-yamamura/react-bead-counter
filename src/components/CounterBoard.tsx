@@ -1,25 +1,21 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Button, Card, Statistic } from "semantic-ui-react";
-import { CounterState } from "../features/counter";
-import { counterSlice } from "../features/counter";
 import "./CounterBoard.css";
 
 const BULK_UNIT = 10;
 
-type Props = {
+export type CounterBoardProps = {
   count: number;
   add: (amount: number) => void;
   decrement: () => void;
   increment: () => void;
 };
 
-const Component = ({
+const CounterBoard = ({
   count = 0,
   add = () => undefined,
   decrement = () => undefined,
   increment = () => undefined,
-}: Props) => (
+}: CounterBoardProps) => (
   <Card>
     <Statistic className="number-board">
       <Statistic.Label>count</Statistic.Label>
@@ -43,19 +39,4 @@ const Component = ({
   </Card>
 );
 
-const Container = () => {
-  const count = useSelector<CounterState, number>((state) => state.count);
-  const dispatch = useDispatch();
-  const { added, decremented, incremented } = counterSlice.actions;
-
-  return (
-    <Component
-      count={count}
-      add={(amount: number) => dispatch(added(amount))}
-      decrement={() => dispatch(decremented())}
-      increment={() => dispatch(incremented())}
-    />
-  );
-};
-
-export default Container;
+export default CounterBoard;

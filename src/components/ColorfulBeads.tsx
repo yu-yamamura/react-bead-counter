@@ -28,7 +28,12 @@ type Props = { count: number };
 const ColorfulBeads = ({ count }: Props) => (
   <SemanticContainer className="beads-box">
     {range(count).map((n: number) => (
-      <Label circular color={colors[n % colors.length]} key={n} />
+      <Label
+        circular
+        color={colors[n % colors.length]}
+        key={n}
+        data-testid="bead"
+      />
     ))}
   </SemanticContainer>
 );

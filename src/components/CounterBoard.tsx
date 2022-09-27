@@ -19,19 +19,24 @@ const CounterBoard = ({
   <Card>
     <Statistic className="number-board">
       <Statistic.Label>count</Statistic.Label>
-      <Statistic.Value>{count}</Statistic.Value>
+      <Statistic.Value data-testid="count">{count}</Statistic.Value>
     </Statistic>
     <Card.Content>
       <div className="ui two buttons">
-        <Button color="red" onClick={decrement}>
+        <Button color="red" onClick={decrement} data-testid="decrement">
           -1
         </Button>
-        <Button color="green" onClick={increment}>
+        <Button color="green" onClick={increment} data-testid="increment">
           +1
         </Button>
       </div>
       <div className="fluid-button">
-        <Button fluid color="grey" onClick={() => add(BULK_UNIT)}>
+        <Button
+          fluid
+          color="grey"
+          onClick={() => add(BULK_UNIT)}
+          data-testid="add"
+        >
           +{BULK_UNIT}
         </Button>
       </div>

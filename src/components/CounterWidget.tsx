@@ -1,13 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useReducer } from "react";
 import ColorfulBeads from "./ColorfulBeads";
 import type { CounterBoardProps } from "./CounterBoard";
+import counterSlice from "../ducks/counterSlice";
 import CounterBoard from "./CounterBoard";
 
 type ContainerProps = { initialCount?: number };
-type CounterState = { count: number };
-
-const initialState: CounterState = { count: 0 };
 
 const Component = ({
   count = 0,
@@ -21,32 +18,16 @@ const Component = ({
   </>
 );
 
-export const counterSlice = createSlice({
-  name: "counter",
-  initialState,
-  reducers: {
-    added: (state: CounterState, action: PayloadAction<number>) => ({
-      ...state,
-      count: state.count + action.payload,
-    }),
-    decremented: (state: CounterState) => ({
-      ...state,
-      count: state.count - 1,
-    }),
-    incremented: (state: CounterState) => ({
-      ...state,
-      count: state.count + 1,
-    }),
-  },
-});
-
 const Container = ({ initialCount = 0 }: ContainerProps) => {
+  const {
+    reducer,
+    actions: { added, decremented, incremented },
+  } = counterSlice;
   const [state, dispatch] = useReducer(
-    counterSlice.reducer,
+    reducer,
     initialCount,
     (count: number) => ({ count })
   );
-  const { added, decremented, incremented } = counterSlice.actions;
 
   return (
     <Component

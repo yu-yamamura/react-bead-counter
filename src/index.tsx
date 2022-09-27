@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import reportWebVitals from "./reportWebVitals";
-import { counterSlice } from "./components/CounterWidget";
+import counterSlice from "./ducks/counterSlice";
 import App from "./App";
 import "./index.css";
 import "semantic-ui-css/semantic.min.css";
